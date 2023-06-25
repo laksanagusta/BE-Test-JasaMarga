@@ -31,7 +31,7 @@ const create = async (request: any): Promise<RuasCoordinates> => {
 const update = async (
   request: Request,
   ruasId: number
-): Promise<any | null> => {
+): Promise<Ruas | null> => {
   const ruas = validate(updateRuasValidation, request);
 
   const checkDataRuasMustExist = await isExistRuas(ruasId);

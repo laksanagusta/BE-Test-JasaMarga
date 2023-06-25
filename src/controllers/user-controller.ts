@@ -1,11 +1,12 @@
 import { NextFunction, Response } from "express";
-import response from "../helpers/response";
 import userService from "../services/user-service";
 
 const importExcel = async (req: any, res: Response, next: NextFunction) => {
   try {
     const importUser = await userService.importExcel(req.file.filename);
-    response.successResponse(res, importUser, "succes import user");
+    res.status(200).json({
+      data: importUser,
+    });
   } catch (e) {
     next(e);
   }

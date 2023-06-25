@@ -1,12 +1,13 @@
 import { NextFunction, Request, Response } from "express";
 import ruasService from "../services/ruas-service";
-import response from "../helpers/response";
 
 const create = async (req: Request, res: Response, next: NextFunction) => {
   try {
     const ruas = await ruasService.create(req);
 
-    response.successResponse(res, ruas, "success create ruas");
+    res.status(200).json({
+      data: ruas,
+    });
   } catch (e) {
     next(e);
   }
@@ -18,7 +19,9 @@ const update = async (req: Request, res: Response, next: NextFunction) => {
     const ruasId = parseInt(req.params.id);
     const ruas = await ruasService.update(request, ruasId);
 
-    response.successResponse(res, ruas, "success update ruas");
+    res.status(200).json({
+      data: ruas,
+    });
   } catch (e) {
     next(e);
   }
@@ -29,7 +32,9 @@ const findById = async (req: Request, res: Response, next: NextFunction) => {
     const ruasId = parseInt(req.params.id);
     const ruas = await ruasService.findById(ruasId);
 
-    response.successResponse(res, ruas);
+    res.status(200).json({
+      data: ruas,
+    });
   } catch (e) {
     next(e);
   }
@@ -39,7 +44,9 @@ const findAll = async (_: Request, res: Response, next: NextFunction) => {
   try {
     const ruas = await ruasService.findAll();
 
-    response.successResponse(res, ruas);
+    res.status(200).json({
+      data: ruas,
+    });
   } catch (e) {
     next(e);
   }
@@ -48,9 +55,11 @@ const findAll = async (_: Request, res: Response, next: NextFunction) => {
 const remove = async (req: Request, res: Response, next: NextFunction) => {
   try {
     const ruasId = parseInt(req.params.id);
-    await ruasService.remove(ruasId);
+    const ruas = await ruasService.remove(ruasId);
 
-    response.successResponse(res, null, "success delete ruas");
+    res.status(200).json({
+      data: ruas,
+    });
   } catch (e) {
     next(e);
   }
