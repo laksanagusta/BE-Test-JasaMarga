@@ -122,7 +122,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"ruas\": \"T1zxxxxsz\",\r\n    \"km_akhir\": \"57+30s0\",\r\n    \"status\": true\r\n}",
+					"raw": "{\r\n    \"ruas\": \"Test Ruas\",\r\n    \"km_awal\": \"57+30s0\",\r\n    \"km_akhir\": \"57+30s0\",\r\n    \"status\": true\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
